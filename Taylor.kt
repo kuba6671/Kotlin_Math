@@ -16,13 +16,14 @@ class Taylor internal constructor(private var x: DoubleArray,private var y: Doub
                 dfx[i][j] = dfx[i][j - 1]?.minus(dfx[i - 1][j - 1]!!)
             }
         }
+
         var result = 0.0
         var denominator = 1.0
         for (j in 2 until x.size + 1) {
             result += dfx[4][j]!! * (1.0 / denominator)
             denominator += 1.0
         }
-        result *= (x0 / h)
+        result *= (1.0 / h)
         System.out.printf("Result: %.4f\n", result)
     }
 }
